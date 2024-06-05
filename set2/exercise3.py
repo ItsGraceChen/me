@@ -18,9 +18,9 @@ def is_odd(a_number):
 
     So if a_number modulo two is zero, then it's even.
     """
-    return None
+    return a_number % 2
 
-
+# def fix_it (x,y)
 def fix_it(moves=True, should_move=True):
     """Decide what to do.
 
@@ -36,7 +36,29 @@ def fix_it(moves=True, should_move=True):
     Most people write this function with 4 return statements.
     As an extra challenge, see if you can get that down to three.
     """
-    return None
+    # x = moves = true
+    # x = moves
+    # should_move = true 
+    # not moves = false
+    # not should_move = false
+
+    # if (something happens ) THEN do something else
+    # elif this works THEN do something
+    # elif this works then print something
+    # else  THEN do this
+    # if x and y 
+
+    if moves and should_move:
+        return "No Problem"
+    elif not moves and should_move:
+        return "Duct Tape"
+    elif moves and not should_move:
+        return "WD-40"
+    else:
+        return "No Problem"
+    
+
+
 
 
 def loops_preview():
@@ -59,7 +81,11 @@ def loops_1a():
     return a list of 10 items, each one a string with exacly one star in it.
     E.g.: ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*']
     """
-    return None
+    star_list = []
+    for i in range(10):
+        star_list.append("*")
+    return star_list
+
 
 
 def loops_1c(number_of_items=5, symbol="#"):
