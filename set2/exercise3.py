@@ -42,11 +42,10 @@ def fix_it(moves=True, should_move=True):
     # not moves = false
     # not should_move = false
 
-    # if (something happens ) THEN do something else
-    # elif this works THEN do something
-    # elif this works then print something
-    # else  THEN do this
-    # if x and y 
+    # if (A) THEN do (B):
+    # elif (A doesn't happen, but C happens instead) THEN do (D)
+    # elif (A doesn't happen and C doesn't happen) then print (E)
+    # else  THEN do (F)
 
     if moves and should_move:
         return "No Problem"
@@ -98,7 +97,11 @@ def loops_1c(number_of_items=5, symbol="#"):
     Remember that you're being passed arguments here. Don't hard code the number
     or the symbol, let it be whatever it wants to be.
     """
-    return None
+    #i is 1 row
+    hash_list = []
+    for i in range(5):
+        hash_list.append("#")
+    return hash_list
 
 
 def loops_2_preview():
@@ -113,6 +116,8 @@ def loops_2_preview():
             ['💩', '💩', '💩', '💩'],
           ]
     """
+    #j is row
+
     field = []
     for i in range(4):
         row = []
@@ -140,7 +145,13 @@ def loops_2():
             ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
           ]
     """
-    return None
+    field = []
+    for a in range(10):
+        row = []
+        for b in range(10):
+            row.append("*")
+        field.append(row)
+    return field
 
 
 def loops_3():
@@ -162,10 +173,16 @@ def loops_3():
     remember that range(10) produces a list of numbers from 0...9
     So for every step produced by `for i in range(10):` i is a different number
     TIP: notice that this needs to to return strings of numbers,
-         so call str(number) to cast.
+        so call str(number) to cast.
     """
-    return None
-
+    field = []
+    for a in range(10):
+        row = []
+        for b in range(10):
+            row.append(a)
+        field.append(row)
+    return field
+    
 
 def loops_4():
     """Make a block of numbers that rises left to right.
@@ -184,7 +201,13 @@ def loops_4():
       ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
     ]
     """
-    return None
+    field = []
+    for a in range(10):
+        row = []
+        for b in range(10):
+            row.append(b)
+        field.append(row)
+    return field
 
 
 def loops_5():
@@ -214,7 +237,15 @@ def loops_5():
         f"There are {num_bottles} green bottles"
     you'll come to see the pros and cons of each over time.
     """
-    return None
+    # use format(a, b) to distinguish a and b insie hre {} brackets
+
+    field = []
+    for a in range(10):
+        row = []
+        for b in range(5):
+            row.append("(i{}, j{})".format(a, b))
+        field.append(row)
+    return field
 
 
 def loops_6():
@@ -237,7 +268,13 @@ def loops_6():
     You can use a variable.
     TIP: look out for the starting condition.
     """
-    return None
+    field = []
+    for a in range(10):
+        row = []
+        for b in range(a + 1):
+            row.append(b)
+        field.append(row)
+    return field
 
 
 def loops_7():
@@ -261,8 +298,43 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    return None
+    row=5
+    startingIndex=4
+    stars=2*row-1
+    maxlength=9
 
+    row=5
+    maxStars=9
+    numberOfStarsAtRow=1
+    startat=4
+
+    field = []
+    for a in range(0,row):
+        row = []
+        for b in range(0,maxStars-numberOfStarsAtRow+1):
+            if b ==startat:
+                
+                for b in range(0,numberOfStarsAtRow):
+                    row.append("*")
+                
+                startat -=1
+                numberOfStarsAtRow +=2
+
+            else:
+                row.append(" ")
+            
+        field.append(row)
+    return field
+
+
+
+
+
+
+
+
+
+    
 
 if __name__ == "__main__":
     # this section does a quick test on your results and prints them nicely.
