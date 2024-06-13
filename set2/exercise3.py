@@ -14,7 +14,7 @@ def is_odd(a_number):
 
     e.g. 4 % 2 = 0
         13 %12 = 1
-         3 % 2 = 1
+        3 % 2 = 1
 
     So if a_number modulo two is zero, then it's even.
     """
@@ -298,10 +298,6 @@ def loops_7():
     This is a hard problem. Use lots of experimentation and draw
     lots of diagrams!
     """
-    row=5
-    startingIndex=4
-    stars=2*row-1
-    maxlength=9
 
     row=5
     maxStars=9
