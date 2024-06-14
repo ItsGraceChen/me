@@ -17,8 +17,17 @@ def loop_ranger(start, stop=None, step=1):
     Look up for how range() works in the python docs. You could  answer this
     with just the range function, but we'd like you to do it the long way.
     """
-    return None
+    start = 1
+    stop = 10
+    step= 1
 
+    evenNumber = false
+
+    answer=[]
+    for x in range(start, stop, step):
+        if
+        answer.append(x)
+    return answer
 
 def two_step_ranger(start, stop):
     """Make a range that steps by 2.
@@ -28,6 +37,9 @@ def two_step_ranger(start, stop):
 
     You can either reuse loop_ranger, or the range function that in the standard library
     """
+    start = 3
+    stop = 20
+    step = 2
     return None
 
 

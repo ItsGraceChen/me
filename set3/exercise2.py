@@ -15,6 +15,7 @@ def exampleGuessingGame():
 
     This is an example guessing game. It'll test as an example too.
     """
+    
     print("\nWelcome to the guessing game!")
     print("A number between 0 and _ ?")
     upperBound = input("Enter an upper bound: ")
