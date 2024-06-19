@@ -17,13 +17,13 @@ def loop_ranger(start, stop=None, step=1):
     Look up for how range() works in the python docs. You could  answer this
     with just the range function, but we'd like you to do it the long way.
     """
-    start = 3
-    stop = 10
-    step = 2
+    loop_ranger = []
     
-    loop_ranger=[]
-    for x in range(start, stop, step):
-        loop_ranger.append(x)
+    atStart = start
+
+    while atStart < stop:
+        loop_ranger.append(atStart)
+        atStart = atStart + step
     return loop_ranger
 
 def two_step_ranger(start, stop):
@@ -34,16 +34,11 @@ def two_step_ranger(start, stop):
 
     You can either reuse loop_ranger, or the range function that in the standard library
     """
-    start = 3
-    stop = 20
-    step = 2
+    numberlist=[]
+    for i in range(start, stop, 2):
+        numberlist.append(i)
+    return numberlist
 
-    answer=[]
-    for x in range(start, stop, step):
-        answer.append(x)
-    return answer
-
-#########################################################################
 def stubborn_asker(low, high):
     """Ask for a number between low and high until actually given one.
 
@@ -52,29 +47,12 @@ def stubborn_asker(low, high):
 
     Look up the docs for a function called "input"
     """
-    list=[4, 9, 14, 19]
-    stubborn_asker=[]
-    guess=input(f"I'm thinking of a few numbers between 1 and 20. Guess one")
-    if guess in list == False:
-        print("Try again")
-    else: print("You got it!")
-    return stubborn_asker
-
-
-    ##print("give me a a lower bound")
-    #lowerbound=input
-    #print("Now give me a a upper bound")
-    #upperbound=input
-    #numberIamthinkingof = 8
-    #firstguess = False
-#
- #   while not firstguess:
-  #      if firstguess < numberIamthinkingof:
-   #         print("lower")
-    #    if firstguess > numberIamthinkingof:
-     #       print(f"higher")
-    #return stubborn_asker
-#########################################################################
+    number = input(f"Enter a {low} and {high} number: ")
+    number = int(number)
+    while number < low or number > high:
+        number = input(f"Enter a {low} and {high} number: ")
+        number = int(number) 
+    return number
 
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
@@ -83,16 +61,13 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    not_number_rejector = []
-
-    number = int(f"give me a number")
-
-    not_number=False
-
-    if not_number:
-        print("that's not a number, try again")
-    else: print("That's a number. Good job")
-    return not_number_rejector
+    while True:
+        number = input(message)
+        try:
+            number = int(number)
+            return number
+        except Exception as e:
+            print("not a number")
 
 
 def super_asker(low, high):
@@ -101,7 +76,13 @@ def super_asker(low, high):
     Combine what you learnt from stubborn_asker and not_number_rejector
     to make a function that does it all!
     """
-    return None
+    number = not_number_rejector("Enter a number: ")
+    while number < low or number > high:
+        try:
+            number = not_number_rejector("Enter a number")
+        except:
+            print("give me a number")
+    return number
 
 
 if __name__ == "__main__":
