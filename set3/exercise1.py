@@ -17,17 +17,14 @@ def loop_ranger(start, stop=None, step=1):
     Look up for how range() works in the python docs. You could  answer this
     with just the range function, but we'd like you to do it the long way.
     """
-    start = 1
+    start = 3
     stop = 10
-    step= 1
-
-    evenNumber = false
-
-    answer=[]
+    step = 2
+    
+    loop_ranger=[]
     for x in range(start, stop, step):
-        if
-        answer.append(x)
-    return answer
+        loop_ranger.append(x)
+    return loop_ranger
 
 def two_step_ranger(start, stop):
     """Make a range that steps by 2.
@@ -40,9 +37,13 @@ def two_step_ranger(start, stop):
     start = 3
     stop = 20
     step = 2
-    return None
 
+    answer=[]
+    for x in range(start, stop, step):
+        answer.append(x)
+    return answer
 
+#########################################################################
 def stubborn_asker(low, high):
     """Ask for a number between low and high until actually given one.
 
@@ -51,8 +52,29 @@ def stubborn_asker(low, high):
 
     Look up the docs for a function called "input"
     """
-    return None
+    list=[4, 9, 14, 19]
+    stubborn_asker=[]
+    guess=input(f"I'm thinking of a few numbers between 1 and 20. Guess one")
+    if guess in list == False:
+        print("Try again")
+    else: print("You got it!")
+    return stubborn_asker
 
+
+    ##print("give me a a lower bound")
+    #lowerbound=input
+    #print("Now give me a a upper bound")
+    #upperbound=input
+    #numberIamthinkingof = 8
+    #firstguess = False
+#
+ #   while not firstguess:
+  #      if firstguess < numberIamthinkingof:
+   #         print("lower")
+    #    if firstguess > numberIamthinkingof:
+     #       print(f"higher")
+    #return stubborn_asker
+#########################################################################
 
 def not_number_rejector(message):
     """Ask for a number repeatedly until actually given one.
@@ -61,7 +83,16 @@ def not_number_rejector(message):
     (e.g. "cow", "six", "8!") then throw it out and ask for an actual number.
     When you do get a number, return it.
     """
-    return None
+    not_number_rejector = []
+
+    number = int(f"give me a number")
+
+    not_number=False
+
+    if not_number:
+        print("that's not a number, try again")
+    else: print("That's a number. Good job")
+    return not_number_rejector
 
 
 def super_asker(low, high):

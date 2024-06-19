@@ -18,7 +18,10 @@ def is_odd(a_number):
 
     So if a_number modulo two is zero, then it's even.
     """
-    return a_number % 2
+    if (a_number % 2 == 0):
+        return False
+    else:
+        return True
 
 # def fix_it (x,y)
 def fix_it(moves=True, should_move=True):
@@ -49,9 +52,9 @@ def fix_it(moves=True, should_move=True):
 
     if moves and should_move:
         return "No Problem"
-    elif not moves and should_move:
-        return "Duct Tape"
     elif moves and not should_move:
+        return "Duct Tape"
+    elif not moves and should_move:
         return "WD-40"
     else:
         return "No Problem"
@@ -99,8 +102,8 @@ def loops_1c(number_of_items=5, symbol="#"):
     """
     #i is 1 row
     hash_list = []
-    for i in range(5):
-        hash_list.append("#")
+    for i in range(number_of_items):
+        hash_list.append(symbol)
     return hash_list
 
 
@@ -179,8 +182,9 @@ def loops_3():
     for a in range(10):
         row = []
         for b in range(10):
-            row.append(a)
+            row.append(str(a))
         field.append(row)
+    print(field)
     return field
     
 
@@ -205,7 +209,7 @@ def loops_4():
     for a in range(10):
         row = []
         for b in range(10):
-            row.append(b)
+            row.append(str(b))
         field.append(row)
     return field
 
@@ -272,7 +276,7 @@ def loops_6():
     for a in range(10):
         row = []
         for b in range(a + 1):
-            row.append(b)
+            row.append(str(b))
         field.append(row)
     return field
 
