@@ -33,7 +33,7 @@ def be_cool_for_ever(name, file_path):
     history_book.close()
 
 
-# look up what '..' means
+# look up what '..' means - the folder you're on
 be_cool_for_ever("Ben", "../ben_is_cool.txt")
 be_cool_for_ever("Ben", "ben_is_cool.lol_UR_joking")
 
