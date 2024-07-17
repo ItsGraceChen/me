@@ -174,36 +174,39 @@ def diarist():
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
     
-    json_data = open(LOCAL + "Trispokedovetiles(laser).gcode").read()
+    number_of_occurences = 0
+    with open("set4/Trispokedovetiles(laser).gcode", "r", encoding="utf-8") as data:
+        for line in data.readlines():
+            if "M10 P1" in line:
+                number_of_occurences +=1
 
-    data = json.loads(json_data)
-    last_name_list = data["results"][0]["name"]["last"]
-    password_list = data["results"][0]["login"]["password"]
-    postcodePlusID_list = data["results"][0]["location"]["postcode"] + int(data["results"][0]["id"]["value"])
-    return {"lastName": last_name_list , "password": password_list, "postcodePlusID": postcodePlusID_list}
-    pass
+    
+    with open("set4/lasers.pew", "w", encoding="utf-8") as f:
+        f.write(str(number_of_occurences))
+    
 
 
 if __name__ == "__main__":
-    
-    # print(get_some_details())
+    print(get_some_details())
 
-    # wp = wordy_pyramid()
-    # [print(f"{word} {len(word)}") for word in wp]
+    wp = wordy_pyramid()
+    [print(f"{word} {len(word)}") for word in wp]
 
     print(pokedex(low=3, high=7))
 
-    # diarist()
 
-    # in_root = os.path.isfile("lasers.pew")
-    # in_set4 = os.path.isfile("set4/lasers.pew")
-    # if not in_set4 and not in_root:
-    #     print("diarist did not create lasers.pew")
-    # elif not in_set4 and in_root:
-    #     print(
-    #         "diarist did create lasers.pew, but in the me folder, it should be in the set4 folder"
-    #     )
-    # elif in_set4:
-    #     print("lasers.pew is in the right place")
+
+    diarist()
+
+    in_root = os.path.isfile("lasers.pew")
+    in_set4 = os.path.isfile("set4/lasers.pew")
+    if not in_set4 and not in_root:
+        print("diarist did not create lasers.pew")
+    elif not in_set4 and in_root:
+        print(
+            "diarist did create lasers.pew, but in the me folder, it should be in the set4 folder"
+        )
+    elif in_set4:
+        print("lasers.pew is in the right place")
 
 
