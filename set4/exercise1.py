@@ -99,6 +99,11 @@ def wordy_pyramid():
     return pyramid
 
 
+
+
+
+
+
 def pokedex(low=1, high=5):
     """Return the name, height and weight of the tallest pokemon in the range low to high.
 
@@ -116,10 +121,39 @@ def pokedex(low=1, high=5):
     id = 5
     url = f"https://pokeapi.co/api/v2/pokemon/{id}"
     r = requests.get(url)
-    if r.status_code == 200:
+    if r.status_code is 200:
         the_json = json.loads(r.text)
+    
+    pokedex_entry = []
 
-    return {"name": None, "weight": None, "height": None}
+    for id in range(low, high):
+        url = f"https://pokeapi.co/api/v2/pokemon/{id}"
+        r = requests.get(url)
+        if r.status_code == 200:
+            the_json = r.json()
+            pokedex_entry.append(the_json)
+
+    tallest = None
+    max_height = -1
+    for pokemon in pokedex_entry:
+        if pokemon["height"] > max_height:
+            max_height = pokemon["height"]
+            tallest = pokemon
+            
+    stats = {
+        "name": tallest["name"],
+        "weight": tallest["weight"],
+        "height": tallest["height"],
+
+    }
+
+
+    return stats
+
+
+    exit(0)
+
+
 
 
 def diarist():
@@ -139,26 +173,37 @@ def diarist():
 
     NOTE: this function doesn't return anything. It has the _side effect_ of modifying the file system
     """
+    
+    json_data = open(LOCAL + "Trispokedovetiles(laser).gcode").read()
+
+    data = json.loads(json_data)
+    last_name_list = data["results"][0]["name"]["last"]
+    password_list = data["results"][0]["login"]["password"]
+    postcodePlusID_list = data["results"][0]["location"]["postcode"] + int(data["results"][0]["id"]["value"])
+    return {"lastName": last_name_list , "password": password_list, "postcodePlusID": postcodePlusID_list}
     pass
 
 
 if __name__ == "__main__":
-    print(get_some_details())
+    
+    # print(get_some_details())
 
-    wp = wordy_pyramid()
-    [print(f"{word} {len(word)}") for word in wp]
+    # wp = wordy_pyramid()
+    # [print(f"{word} {len(word)}") for word in wp]
 
     print(pokedex(low=3, high=7))
 
-    diarist()
+    # diarist()
 
-    in_root = os.path.isfile("lasers.pew")
-    in_set4 = os.path.isfile("set4/lasers.pew")
-    if not in_set4 and not in_root:
-        print("diarist did not create lasers.pew")
-    elif not in_set4 and in_root:
-        print(
-            "diarist did create lasers.pew, but in the me folder, it should be in the set4 folder"
-        )
-    elif in_set4:
-        print("lasers.pew is in the right place")
+    # in_root = os.path.isfile("lasers.pew")
+    # in_set4 = os.path.isfile("set4/lasers.pew")
+    # if not in_set4 and not in_root:
+    #     print("diarist did not create lasers.pew")
+    # elif not in_set4 and in_root:
+    #     print(
+    #         "diarist did create lasers.pew, but in the me folder, it should be in the set4 folder"
+    #     )
+    # elif in_set4:
+    #     print("lasers.pew is in the right place")
+
+
