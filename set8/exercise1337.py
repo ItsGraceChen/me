@@ -139,14 +139,10 @@ def set_it_on_fire(input_string="very naughty boy") -> str:
     TIP: make sure that you have a 🔥 on both ends of the string.
     """
     fire = "🔥"
-    
     set_it_on_fire = fire.join(input_string)
     upper = set_it_on_fire.upper()
-    
-        
-    return both
 
-    return None
+    return fire + upper + fire
 
 
 def the_chain_gang_5(the_value) -> bool:
@@ -197,8 +193,17 @@ def best_letter_for_pets() -> str:
 
     the_alphabet = string.ascii_lowercase
     most_popular_letter = ""
+    max_count = 0 
 
+    for letter in the_alphabet:
+        pet_list = pet_filter(letter)
+        pet_count = len(pet_list)
+        if pet_count > max_count:
+            max_count = pet_count
+            most_popular_letter = letter
     return most_popular_letter
+
+
 
 
 def make_filler_text_dictionary() -> dict:
@@ -225,11 +230,19 @@ def make_filler_text_dictionary() -> dict:
     (i.e. 3, 4, 5, 6, 7 and 4 words for each)
     TIP: you'll need the requests library
     """
-
-    url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength="
-    wd = {}
-    site = requests.get(url+)
-    return wd
+    id = 3
+    
+    id_dictionary = {}
+    for id in range(3, 8):
+        id_list = []
+        for _ in range(4):
+            url = f"https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={id}"
+            wd = {}
+            r = requests.get(url)
+            word = r.text
+            id_list.append(word)
+        id_dictionary[id] = id_list
+    return id_dictionary
 
 
 def random_filler_text(number_of_words=200) -> str:
