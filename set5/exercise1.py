@@ -33,7 +33,7 @@ def wordy_pyramid():
     for i in range(3, 21, 2):
         url = baseURL.format(length=i)
         r = requests.get(url)
-        if r.status_code is 200:
+        if r.status_code == 200:
             message = r.text
             pyramid_list.append(message)
         else:
@@ -41,7 +41,7 @@ def wordy_pyramid():
     for i in range(20, 3, -2):
         url = baseURL.format(length=i)
         r = requests.get(url)
-        if r.status_code is 200:
+        if r.status_code == 200:
             message = r.text
             pyramid_list.append(message)
         else:
@@ -51,23 +51,30 @@ def wordy_pyramid():
 
 
 def get_a_word_of_length_n(length):
-    pyramid_list = []
+    base_url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength={length}"
+    pyramid = []
+
+    # Building pyramid from shortest to longest
     for i in range(3, 21, 2):
-        url = baseURL.format(length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.text
-            pyramid_list.append(message)
+        url = base_url.format(length=i)
+        response = requests.get(url)
+        if response.status_code == 200:
+            pyramid.append(response.text.strip())
         else:
-            print("failed a request", r.status_code, i)
-    for i in range(20, 3, -2):
-        url = baseURL.format(length=i)
-        r = requests.get(url)
-        if r.status_code is 200:
-            message = r.text
-            pyramid_list.append(message)
+            print(f"Request failed with status code {response.status_code} for length {i}")
+
+    # Building pyramid from longest to shortest
+    for i in range(20, 2, -2):
+        url = base_url.format(length=i)
+        response = requests.get(url)
+        if response.status_code == 200:
+            pyramid.append(response.text.strip())
         else:
-            print("failed a request", r.status_code, i)
+            print(f"Request failed with status code {response.status_code} for length {i}")
+
+    return pyramid
+
+
     pass
 
 
