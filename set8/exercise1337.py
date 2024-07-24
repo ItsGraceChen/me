@@ -24,8 +24,8 @@ def password_please() -> str:
     """Returns a string, 8 or more characters long, contains at
     least one upper case letter and one lowercase letter.
     TIP: don't put in a real password!"""
-    password_please = ["helloWorld10"]
-    return password_please
+    password = "Password"
+    return "abcdefghijABCDEFGHIJ"
 
 
 def list_please() -> list[Any]:
@@ -55,7 +55,7 @@ def dictionary_please() -> dict:
 def is_it_5(some_number) -> bool:
     """Returns True if the argument passed is 5, otherwise returns False."""
     well_is_it = False
-    if some_number >= 5:
+    if some_number == 5:
         return True
     else:
         return well_is_it
@@ -64,7 +64,8 @@ def is_it_5(some_number) -> bool:
 
 def take_five(some_number) -> int:
     """Subtracts 5 from some_number."""
-    return None
+    five_subtractor = some_number - 5
+    return five_subtractor
 
 
 def greet(name="Towering Timmy") -> str:
@@ -73,7 +74,8 @@ def greet(name="Towering Timmy") -> str:
     E.g. if given as "Towering Timmy" it should
          return "Well hello, Towering Timmy"
     """
-    return None
+    greeting = (f"Well hello, {name}")
+    return greeting
 
 
 def one_counter(input_list=[1, 4, 1, 5, 1, 1]) -> int:
@@ -81,8 +83,7 @@ def one_counter(input_list=[1, 4, 1, 5, 1, 1]) -> int:
     Return an integer.
     TIP: the test will use a different input_list, so don't just return 2
     """
-    count = None
-
+    count = input_list.count(1)
     return count
 
 
@@ -90,8 +91,7 @@ def n_counter(search_for_this, input_list=[1, 4, 1, 5, 1, 1]) -> int:
     """Count the number of times search_for_this shows up in the input_list.
     Return an integer.
     """
-    count = None
-
+    count = input_list.count(search_for_this)
     return count
 
 
@@ -114,8 +114,16 @@ def fizz_buzz() -> list:
          'FizzBuzz', 16, 17, ...]
     """
     fizz_buzz_list = []
-    # your code here
 
+    for i in range(1,101):
+        if i % 3 == 0 and i % 5 == 0:
+            fizz_buzz_list.append("FizzBuzz")
+        elif i % 3 == 0:
+            fizz_buzz_list.append("Fizz")
+        elif i % 5 == 0:
+            fizz_buzz_list.append("Buzz")
+        else:
+            fizz_buzz_list.append(i)
     return fizz_buzz_list
 
 
@@ -130,6 +138,13 @@ def set_it_on_fire(input_string="very naughty boy") -> str:
     TIP: consider using the 'join' method in Python.
     TIP: make sure that you have a 🔥 on both ends of the string.
     """
+    fire = "🔥"
+    
+    set_it_on_fire = fire.join(input_string)
+    upper = set_it_on_fire.upper()
+    
+        
+    return both
 
     return None
 
@@ -144,8 +159,9 @@ def the_chain_gang_5(the_value) -> bool:
     TIP: you've already written a function that returns True if the value is 5
     TIP: you've already written a function that subtracts 5
     """
-
-    return None
+    new_number = take_five(the_value)
+    is_5 = is_it_5(new_number)
+    return is_5
 
 
 def pet_filter(letter="a") -> list:
@@ -163,7 +179,9 @@ def pet_filter(letter="a") -> list:
     ]
     # fmt: on
     filtered = []
-
+    for pet in pets:
+        if letter in pet:
+            filtered.append(pet)
     return filtered
 
 
@@ -210,7 +228,7 @@ def make_filler_text_dictionary() -> dict:
 
     url = "https://us-central1-waldenpondpress.cloudfunctions.net/give_me_a_word?wordlength="
     wd = {}
-
+    site = requests.get(url+)
     return wd
 
 
