@@ -259,7 +259,16 @@ def random_filler_text(number_of_words=200) -> str:
     my_dict = make_filler_text_dictionary()
 
     words = []
+    for _ in range(number_of_words):
+        # Randomly choose a length between 3 and 7
+        length = random.randint(3, 7)
+        
+        # Randomly pick a word of that length from the dictionary
+        if length in my_dict:
+            random_word = random.choice(my_dict[length])
+            words.append(random_word)
 
+    # Join the list of words into a single paragraph separated by spaces
     return " ".join(words)
 
 
@@ -278,10 +287,30 @@ def fast_filler(number_of_words=200) -> str:
     it'll convert integer keys to strings.
     If you get this one to work, you are a Very Good Programmer™!
     """
-
     fname = "dict_cache.json"
 
-    return None
+    if os.path.exists(fname):
+        with open(fname, "r") as file:
+            my_dict = json.load(file)
+    else:
+        my_dict = make_filler_text_dictionary()
+        with open(fname, "w") as file:
+            json.dump(my_dict, file)
+
+    words = []
+
+    for _ in range(number_of_words):
+        word_length = random.randint(3, 7)
+        word_list = my_dict[str(word_length)]
+        random_word = random.choice(word_list)
+        words.append(random_word)
+
+    paragraph = " ".join(words)
+
+    if not paragraph.endswith('.'):
+        paragraph += '.'
+
+    return paragraph
 
 
 if __name__ == "__main__":
